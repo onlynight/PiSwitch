@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "led.h": "c",
+        "sys.h": "c",
+        "stm32f10x_gpio.h": "c",
+        "stm32f10x.h": "c",
+        "stm32f10x_conf.h": "c",
+        "rte_components.h": "c",
+        "usart.h": "c"
+    }
+}
