@@ -6,7 +6,9 @@
         "stm32f10x.h": "c",
         "stm32f10x_conf.h": "c",
         "rte_components.h": "c",
-        "usart.h": "c"
+        "usart.h": "c",
+        "stm32f10x_adc.h": "c"
     },
-    "C_Cpp.intelliSenseEngineFallback": "Disabled"
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "C_Cpp.errorSquiggles": "Disabled"
 }
