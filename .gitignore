@@ -1,4 +1,5 @@
 /Objects
+README.html
 *.o
 *.d
 *.hex

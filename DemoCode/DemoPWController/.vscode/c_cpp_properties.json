@@ -45,7 +45,10 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceRoot}"
+                "${workspaceRoot}",
+                "${workspaceRoot}/RTE/Device/STM32F103C8",
+                "${workspaceRoot}/RTE/_DPWC",
+                "E:/Code/PiSwitch/Library/stm32f10x_lib"
             ],
             "defines": [
                 "_DEBUG",
@@ -55,7 +58,7 @@
             "browse": {
                 "path": [
                     "${workspaceRoot}",
-                    "E:/DevTools/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.2.0/Device",
+                    "E:/Code/PiSwitch/Library/stm32f10x_lib",
                     "${workspaceRoot}/RET"
                 ],
                 "limitSymbolsToIncludedHeaders": true,

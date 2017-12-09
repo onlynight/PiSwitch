@@ -7,5 +7,6 @@
         "stm32f10x_conf.h": "c",
         "rte_components.h": "c",
         "usart.h": "c"
-    }
+    },
+    "C_Cpp.intelliSenseEngineFallback": "Disabled"
 }
