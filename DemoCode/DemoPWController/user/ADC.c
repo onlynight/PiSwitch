@@ -22,8 +22,8 @@ void Init_ADC(void)
     ADC_Init(ADC1, &ADC_InitStructure);
 
     //规则模式通道配置
-    ADC_RegularChannelConfig(ADC1, ADC_Channel_0, 1, ADC_SampleTime_239Cycles5);
-    ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 2, ADC_SampleTime_239Cycles5);
+    ADC_RegularChannelConfig(ADC1, ADC_Channel_4, 1, ADC_SampleTime_239Cycles5);
+    ADC_RegularChannelConfig(ADC1, ADC_Channel_5, 2, ADC_SampleTime_239Cycles5);
 
     // ADC_ExternalTrigConvCmd(ADC1, ENABLE);
     ADC_DMACmd(ADC1, ENABLE); //使能ADC1的DMA

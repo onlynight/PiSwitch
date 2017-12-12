@@ -11,7 +11,6 @@
 #include "DMA.h"
 #include "EXTI.h"
 #include "PWR.h"
-#include <stdio.h>
 
 #ifndef LED_OPERATE
 #define LED_ON GPIO_ResetBits(GPIOC, GPIO_Pin_13)

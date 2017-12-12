@@ -3,9 +3,9 @@
 static float led_pwm = 0;
 static int dir = 1;
 
-void TIM2_IRQHandler(void)
+void TIM4_IRQHandler(void)
 {
-    if (TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET)
+    if (TIM_GetITStatus(TIM4, TIM_IT_CC1) != RESET)
     {
         if (dir)
             led_pwm += 300.0f;
@@ -15,21 +15,21 @@ void TIM2_IRQHandler(void)
         if (led_pwm >= 60000)
         {
             dir = 0;
-            LED_OFF;
+            // LED_OFF;
         }
         if (led_pwm <= 0)
         {
             dir = 1;
-            LED_ON;
+            // LED_ON;
         }
 
         // TIM4->CCR3 = (int)led_pwm;
         TIM_SetCompare3(TIM4, led_pwm);
-        TIM_ClearITPendingBit(TIM2, TIM_IT_CC1);
+        TIM_ClearITPendingBit(TIM4, TIM_IT_CC1);
     }
 }
 
-void ADC1_ExternalTriger_T4_CC4_Init(void)
+void Init_TIM(void)
 {
     TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
     TIM_OCInitTypeDef TIM_OCInitStructure;
@@ -60,20 +60,7 @@ void ADC1_ExternalTriger_T4_CC4_Init(void)
     TIM_OC4Init(TIM4, &TIM_OCInitStructure);
 
     TIM_CtrlPWMOutputs(TIM4, ENABLE);
+
+    TIM_ITConfig(TIM4, TIM_IT_CC1, ENABLE);
     TIM_Cmd(TIM4, ENABLE);
-}
-
-void Timer_Init(void)
-{
-    TIM_TimeBaseInitTypeDef TIM_InitStructure;
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-
-    TIM_InitStructure.TIM_Period = 60000 - 1;
-    TIM_InitStructure.TIM_Prescaler = 2;
-    TIM_InitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
-    TIM_InitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-    TIM_TimeBaseInit(TIM2, &TIM_InitStructure);
-
-    TIM_ITConfig(TIM2, TIM_IT_CC1, ENABLE);
-    TIM_Cmd(TIM2, ENABLE);
 }

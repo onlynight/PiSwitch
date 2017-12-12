@@ -3,6 +3,7 @@
 
 #include "SYS.h"
 
-void initGPIO(void);
+void Init_GPIO(void);
+void RCC_Configuration(void);
 
 #endif

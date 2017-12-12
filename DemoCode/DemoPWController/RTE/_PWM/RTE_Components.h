@@ -4,7 +4,7 @@
  *      *** Do not modify ! ***
  *
  * Project: 'DPWC' 
- * Target:  'DPWC' 
+ * Target:  'PWM' 
  */
 
 #ifndef RTE_COMPONENTS_H

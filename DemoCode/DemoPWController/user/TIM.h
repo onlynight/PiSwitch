@@ -3,7 +3,6 @@
 
 #include "SYS.h"
 
-void ADC1_ExternalTriger_T4_CC4_Init(void);
-void Timer_Init(void);
+void Init_TIM(void);
 
 #endif

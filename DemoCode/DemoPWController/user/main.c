@@ -2,18 +2,16 @@
 
 int main(int argc, char const *argv[])
 {
-	initGPIO();
+	Init_GPIO();
 	Init_NVIC();
 	Init_USART2();
 	Init_USART1();
-	ADC1_ExternalTriger_T4_CC4_Init();
+	Init_TIM();
 	Init_DMA();
 	Init_ADC();
-
-	Timer_Init();
 	Init_EXTI();
-
 	Init_PWR();
+	RCC_Configuration();
 
 	LED_OFF;
 
