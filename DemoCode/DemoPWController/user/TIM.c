@@ -40,7 +40,7 @@ void Init_TIM(void)
     TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
     TIM_TimeBaseStructure.TIM_Period = 60000 - 1;
     TIM_TimeBaseStructure.TIM_Prescaler = 3 - 1;
-    TIM_TimeBaseStructure.TIM_ClockDivision = 0x00;
+    TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
     TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure);
 
@@ -63,4 +63,36 @@ void Init_TIM(void)
 
     TIM_ITConfig(TIM4, TIM_IT_CC1, ENABLE);
     TIM_Cmd(TIM4, ENABLE);
+}
+
+void Init_PWM_TIM(uint16_t blank, uint16_t total)
+{
+    TIM_TimeBaseInitTypeDef TIM_InitStructure;
+    TIM_OCInitTypeDef TIM_OCInitStructure;
+
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+
+    TIM_InitStructure.TIM_Period = total;
+    TIM_InitStructure.TIM_Prescaler = 2;
+    TIM_InitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+    TIM_InitStructure.TIM_CounterMode = TIM_CounterMode_Up;
+    TIM_TimeBaseInit(TIM3, &TIM_InitStructure);
+
+    TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+    TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
+    TIM_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Enable;
+    TIM_OCInitStructure.TIM_Pulse = blank;
+    TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
+    TIM_OC1Init(TIM3, &TIM_OCInitStructure);
+    TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
+
+    // TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+    // TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
+    // TIM_OCInitStructure.TIM_Pulse = blank;
+    // TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
+    // TIM_OC2Init(TIM3, &TIM_OCInitStructure);
+    // TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
+
+    TIM_CtrlPWMOutputs(TIM3, ENABLE);
+    TIM_Cmd(TIM3, ENABLE);
 }

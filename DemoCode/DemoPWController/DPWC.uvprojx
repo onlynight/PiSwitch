@@ -480,6 +480,16 @@
               <FileType>1</FileType>
               <FilePath>.\user\PWR.c</FilePath>
             </File>
+            <File>
+              <FileName>Moter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\Moter.c</FilePath>
+            </File>
+            <File>
+              <FileName>Moter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\user\Moter.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

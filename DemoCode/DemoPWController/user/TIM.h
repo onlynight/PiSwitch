@@ -4,5 +4,6 @@
 #include "SYS.h"
 
 void Init_TIM(void);
+void Init_PWM_TIM(uint16_t blank,uint16_t total);
 
 #endif

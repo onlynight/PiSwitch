@@ -9,6 +9,7 @@
 ".\objects\exti.o"
 ".\objects\delay.o"
 ".\objects\pwr.o"
+".\objects\moter.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_adc.o"
 ".\objects\stm32f10x_dma.o"

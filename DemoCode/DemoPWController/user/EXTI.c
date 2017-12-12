@@ -6,6 +6,7 @@ void EXTI15_10_IRQHandler()
     {
         LED_OFF;
         TIM_ITConfig(TIM4, TIM_IT_CC1, DISABLE);
+        setSpeed(1);
         EXTI_ClearFlag(EXTI_Line10);         //清除中断标志
         EXTI_ClearITPendingBit(EXTI_Line10); //清除EXTI线路挂起位
     }
@@ -14,6 +15,7 @@ void EXTI15_10_IRQHandler()
     {
         LED_ON;
         TIM_ITConfig(TIM4, TIM_IT_CC1, ENABLE);
+        setSpeed(100);
         EXTI_ClearFlag(EXTI_Line11);         //清除中断标志
         EXTI_ClearITPendingBit(EXTI_Line11); //清除EXTI线路挂起位
     }
@@ -22,23 +24,14 @@ void EXTI15_10_IRQHandler()
     {
         LED_OFF;
         TIM_SetCompare3(TIM4, 0);
+        TIM_SetCompare1(TIM3, 0);
+
+        Delay(1000);
         Stop_Controller();
         EXTI_ClearFlag(EXTI_Line12);
         EXTI_ClearITPendingBit(EXTI_Line12);
     }
 }
-
-// void EXTI0_IRQHandler(void)
-// {
-//     if (EXTI_GetITStatus(EXTI_Line0) != RESET)
-//     {
-//         LED_ON;
-//         RCC_Configuration();
-//         SystemInit();
-//         EXTI_ClearFlag(EXTI_Line0); //清除中断标志
-//         EXTI_ClearITPendingBit(EXTI_Line0); //清除EXTI线路挂起位
-//     }
-// }
 
 void Init_EXTI(void)
 {

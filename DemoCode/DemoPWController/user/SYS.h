@@ -11,6 +11,7 @@
 #include "DMA.h"
 #include "EXTI.h"
 #include "PWR.h"
+#include "Moter.h"
 
 #ifndef LED_OPERATE
 #define LED_ON GPIO_ResetBits(GPIOC, GPIO_Pin_13)
@@ -33,5 +34,10 @@
 #ifndef AD_VALUE
 static uint16_t ad_value[NUM_CHANNEL] = {0};
 #endif
+
+#define TIM3_MAX_VALUE 1000
+#define TIM3_MIN_VALUE 250
+
+static int current_speed = 0;
 
 #endif

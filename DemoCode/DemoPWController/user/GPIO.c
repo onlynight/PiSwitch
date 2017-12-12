@@ -5,6 +5,7 @@ void GPIO_Key_Init(void);
 void GPIO_USART2_Init(void);
 void GPIO_USART1_Init(void);
 void GPIO_ADC_Init(void);
+void GPIO_Moter_Init(void);
 
 void Init_GPIO()
 {
@@ -14,6 +15,7 @@ void Init_GPIO()
     GPIO_USART2_Init();
     GPIO_USART1_Init();
     GPIO_ADC_Init();
+    GPIO_Moter_Init();
 }
 
 void GPIO_LED_Init()
@@ -118,23 +120,17 @@ void GPIO_ADC_Init(void)
     GPIO_PinRemapConfig(GPIO_Remap_ADC1_ETRGREG, ENABLE);
 }
 
-void RCC_Configuration(void)
+void GPIO_Moter_Init(void)
 {
-    ErrorStatus HSEStartUpStatus;
+    GPIO_InitTypeDef GPIO_InitStructure;
 
-    RCC_HSEConfig(RCC_HSE_ON);
-    HSEStartUpStatus = RCC_WaitForHSEStartUp();
-    if (HSEStartUpStatus == SUCCESS)
-    {
-        RCC_HCLKConfig(RCC_SYSCLK_Div1);
-        RCC_PCLK1Config(RCC_HCLK_Div2);
-        RCC_PCLK2Config(RCC_HCLK_Div1);
-        RCC_PLLConfig(RCC_PLLSource_HSE_Div1, RCC_PLLMul_4);
-        RCC_PLLCmd(ENABLE);
-        while (RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET)
-            ;
-        RCC_SYSCLKConfig(RCC_SYSCLKSource_PLLCLK);
-        while (RCC_GetSYSCLKSource() != 0x08)
-            ;
-    }
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+    GPIO_ResetBits(GPIOA, GPIO_Pin_6);
+    GPIO_ResetBits(GPIOA, GPIO_Pin_7);
+
+    // GPIO_PinRemapConfig(GPIO_FullRemap_TIM3, ENABLE);
 }

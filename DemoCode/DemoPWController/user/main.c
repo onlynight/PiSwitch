@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
 	Init_ADC();
 	Init_EXTI();
 	Init_PWR();
-	RCC_Configuration();
+	Init_PWM_TIM(0, TIM3_MAX_VALUE);
 
 	LED_OFF;
 
@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
 		// Delay(3000000);
 		// UART_PutStr(USART2, "Hello Nexus5");
 		// Delay(3000000);
-		
+
 		// UART_SendInt16(USART2, 65535);
 		// Delay(3000000);
 		// UART_PutStr(USART2, "Hello Nexus5");

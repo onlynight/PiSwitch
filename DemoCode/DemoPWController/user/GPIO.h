@@ -4,6 +4,5 @@
 #include "SYS.h"
 
 void Init_GPIO(void);
-void RCC_Configuration(void);
 
 #endif
