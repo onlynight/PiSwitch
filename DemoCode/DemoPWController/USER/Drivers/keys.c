@@ -11,9 +11,10 @@ void Keys_Config(void)
 
 static void GPIO_Config(void)
 {
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOA, ENABLE);
+    
     // key gpio init
     GPIO_InitTypeDef GPIP_Key_InitStructure;
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOA, ENABLE);
 
     GPIP_Key_InitStructure.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_12;
     GPIP_Key_InitStructure.GPIO_Mode = GPIO_Mode_IPU;

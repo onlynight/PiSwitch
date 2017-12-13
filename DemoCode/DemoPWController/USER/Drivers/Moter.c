@@ -28,7 +28,7 @@ void setSpeed(int speed)
 void Moter_Config(void)
 {
     GPIO_Config();
-    TIM_PWM_Config(TIM3_MAX_VALUE/2, TIM3_MAX_VALUE);
+    TIM_PWM_Config(0, TIM3_MAX_VALUE);
 }
 
 static void GPIO_Config(void)

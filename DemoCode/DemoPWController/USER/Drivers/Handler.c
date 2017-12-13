@@ -8,8 +8,8 @@ void DMA1_Channel1_IRQHandler(void)
     if (DMA_GetITStatus(DMA1_IT_TC1) != RESET)
     {
         //自己的中断处理代码 但是记住程序不要太复杂  最好不要超过中断时间
-        UART_SendInt16(USART1, get_ChannelValue(ADC_Channel_0));
-        UART_SendInt16(USART1, get_ChannelValue(ADC_Channel_1));
+        UART_SendInt(USART1, get_ChannelValue(ADC_Channel_0));
+        UART_SendInt(USART1, get_ChannelValue(ADC_Channel_1));
         DMA_ClearITPendingBit(DMA1_IT_TC1);
     }
 }

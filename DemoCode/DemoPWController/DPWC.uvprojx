@@ -381,14 +381,14 @@
           <GroupName>main</GroupName>
           <Files>
             <File>
-              <FileName>main.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\USER\main.h</FilePath>
-            </File>
-            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\main.h</FilePath>
             </File>
           </Files>
         </Group>
