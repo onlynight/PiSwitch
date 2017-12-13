@@ -12,6 +12,7 @@
 ".\objects\device_pwr.o"
 ".\objects\nvic.o"
 ".\objects\tim.o"
+".\objects\protocol.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_adc.o"
 ".\objects\stm32f10x_dma.o"

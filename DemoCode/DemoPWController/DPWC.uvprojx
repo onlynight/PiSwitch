@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\USER;.\USER\Drivers;.\USER\Config</IncludePath>
+              <IncludePath>.\USER;.\USER\Drivers;.\USER\Config;.\USER\Protocol</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -519,6 +519,21 @@
               <FileName>TIM.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\USER\Config\TIM.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Protocol</GroupName>
+          <Files>
+            <File>
+              <FileName>Protocol.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Protocol\Protocol.c</FilePath>
+            </File>
+            <File>
+              <FileName>Protocol.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Protocol\Protocol.h</FilePath>
             </File>
           </Files>
         </Group>

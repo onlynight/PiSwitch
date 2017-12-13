@@ -18,6 +18,7 @@ typedef int bool;
 #include "Moter.h"
 #include "TTL_USB.h"
 #include "USART.h"
+#include "Protocol.h"
 
 #include "NVIC.h"
 
