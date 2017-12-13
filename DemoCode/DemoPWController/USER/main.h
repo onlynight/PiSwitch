@@ -1,6 +1,10 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
+typedef int bool;
+#define false 0
+#define true 1
+
 #include "stm32f10x_conf.h"
 
 #include "TIM.h"
@@ -16,8 +20,5 @@
 #include "USART.h"
 
 #include "NVIC.h"
-
-#define LED_ON GPIO_SetBits(GPIOC, GPIO_Pin_13)
-#define LED_OFF GPIO_ResetBits(GPIOC, GPIO_Pin_13)
 
 #endif

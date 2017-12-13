@@ -37,3 +37,15 @@ void LED_Config(void)
     GPIO_Config();
     PWM_Config();
 }
+
+void Set_LED_State(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, bool enable)
+{
+    if( enable )
+    {
+        GPIO_ResetBits(GPIOx, GPIO_Pin);
+    }
+    else
+    {
+        GPIO_SetBits(GPIOx, GPIO_Pin);
+    }
+}
