@@ -1,17 +1,17 @@
-#include "SYS.h"
+#include "main.h"
 
 int main(int argc, char const *argv[])
 {
-	Init_GPIO();
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+	TIM_Config();
+	Moter_Config();
+	LED_Config();
+	Joystick_Config();
+	BT04_A_Config();
+	TTL_USB_Config();
+	Keys_Config();
+	PWR_Config();
 	Init_NVIC();
-	Init_USART2();
-	Init_USART1();
-	Init_TIM();
-	Init_DMA();
-	Init_ADC();
-	Init_EXTI();
-	Init_PWR();
-	Init_PWM_TIM(0, TIM3_MAX_VALUE);
 
 	LED_OFF;
 

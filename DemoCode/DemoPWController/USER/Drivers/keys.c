@@ -1,39 +1,35 @@
-#include "EXTI.h"
+#include "keys.h"
 
-void EXTI15_10_IRQHandler()
+static void GPIO_Config(void);
+void EXTI_Config(void);
+
+void Keys_Config(void)
 {
-    if (EXTI_GetITStatus(EXTI_Line10) != RESET)
-    {
-        LED_OFF;
-        TIM_ITConfig(TIM4, TIM_IT_CC1, DISABLE);
-        setSpeed(1);
-        EXTI_ClearFlag(EXTI_Line10);         //清除中断标志
-        EXTI_ClearITPendingBit(EXTI_Line10); //清除EXTI线路挂起位
-    }
-
-    if (EXTI_GetITStatus(EXTI_Line11) != RESET)
-    {
-        LED_ON;
-        TIM_ITConfig(TIM4, TIM_IT_CC1, ENABLE);
-        setSpeed(100);
-        EXTI_ClearFlag(EXTI_Line11);         //清除中断标志
-        EXTI_ClearITPendingBit(EXTI_Line11); //清除EXTI线路挂起位
-    }
-
-    if (EXTI_GetITStatus(EXTI_Line12) != RESET)
-    {
-        LED_OFF;
-        TIM_SetCompare3(TIM4, 0);
-        TIM_SetCompare1(TIM3, 0);
-
-        Delay(1000);
-        Stop_Controller();
-        EXTI_ClearFlag(EXTI_Line12);
-        EXTI_ClearITPendingBit(EXTI_Line12);
-    }
+    GPIO_Config();
+    EXTI_Config();
 }
 
-void Init_EXTI(void)
+static void GPIO_Config(void)
+{
+    // key gpio init
+    GPIO_InitTypeDef GPIP_Key_InitStructure;
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOA, ENABLE);
+
+    GPIP_Key_InitStructure.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_12;
+    GPIP_Key_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+    GPIP_Key_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOB, &GPIP_Key_InitStructure);
+    GPIO_SetBits(GPIOB, GPIO_Pin_10);
+    GPIO_SetBits(GPIOB, GPIO_Pin_11);
+    GPIO_SetBits(GPIOB, GPIO_Pin_12);
+
+    GPIP_Key_InitStructure.GPIO_Pin = GPIO_Pin_0;
+    GPIP_Key_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+    GPIO_Init(GPIOB, &GPIP_Key_InitStructure);
+    GPIO_SetBits(GPIOB, GPIO_Pin_0);
+}
+
+void EXTI_Config(void)
 {
     EXTI_InitTypeDef EXTI_InitStructure;
 
@@ -46,21 +42,21 @@ void Init_EXTI(void)
 
     EXTI_InitStructure.EXTI_Line = EXTI_Line10;
     EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
     EXTI_Init(&EXTI_InitStructure);
     GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource10);
 
     EXTI_InitStructure.EXTI_Line = EXTI_Line11;
     EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
     EXTI_Init(&EXTI_InitStructure);
     GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource11);
 
     EXTI_InitStructure.EXTI_Line = EXTI_Line12;
     EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
     EXTI_Init(&EXTI_InitStructure);
     GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource12);

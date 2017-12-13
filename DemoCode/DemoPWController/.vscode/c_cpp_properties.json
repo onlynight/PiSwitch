@@ -48,6 +48,7 @@
                 "${workspaceRoot}",
                 "${workspaceRoot}/RTE/Device/STM32F103C8",
                 "${workspaceRoot}/RTE/_DPWC",
+                "${workspaceRoot}/USER",
                 "E:/Code/PiSwitch/Library/stm32f10x_lib"
             ],
             "defines": [

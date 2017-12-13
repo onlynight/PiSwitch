@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>PWM</OutputName>
+          <OutputName>DPWC</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>.\USER;.\USER\Drivers;.\USER\Config</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -378,117 +378,147 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>user</GroupName>
+          <GroupName>main</GroupName>
           <Files>
+            <File>
+              <FileName>main.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\main.h</FilePath>
+            </File>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\main.c</FilePath>
+              <FilePath>.\USER\main.c</FilePath>
             </File>
-            <File>
-              <FileName>GPIO.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\GPIO.h</FilePath>
-            </File>
-            <File>
-              <FileName>SYS.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\SYS.h</FilePath>
-            </File>
-            <File>
-              <FileName>GPIO.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\GPIO.c</FilePath>
-            </File>
-            <File>
-              <FileName>NVIC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\NVIC.c</FilePath>
-            </File>
-            <File>
-              <FileName>NVIC.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\NVIC.h</FilePath>
-            </File>
-            <File>
-              <FileName>USART.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\USART.c</FilePath>
-            </File>
-            <File>
-              <FileName>USART.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\USART.h</FilePath>
-            </File>
-            <File>
-              <FileName>ADC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\ADC.c</FilePath>
-            </File>
-            <File>
-              <FileName>ADC.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\ADC.h</FilePath>
-            </File>
-            <File>
-              <FileName>DMA.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\DMA.c</FilePath>
-            </File>
-            <File>
-              <FileName>DMA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\DMA.h</FilePath>
-            </File>
-            <File>
-              <FileName>TIM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\TIM.c</FilePath>
-            </File>
-            <File>
-              <FileName>TIM.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\TIM.h</FilePath>
-            </File>
-            <File>
-              <FileName>EXTI.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\EXTI.h</FilePath>
-            </File>
-            <File>
-              <FileName>EXTI.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\EXTI.c</FilePath>
-            </File>
-            <File>
-              <FileName>Delay.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\Delay.h</FilePath>
-            </File>
-            <File>
-              <FileName>Delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\Delay.c</FilePath>
-            </File>
-            <File>
-              <FileName>PWR.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\PWR.h</FilePath>
-            </File>
-            <File>
-              <FileName>PWR.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\PWR.c</FilePath>
-            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Drivers</GroupName>
+          <Files>
             <File>
               <FileName>Moter.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\Moter.c</FilePath>
+              <FilePath>.\USER\Drivers\Moter.c</FilePath>
             </File>
             <File>
               <FileName>Moter.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\user\Moter.h</FilePath>
+              <FilePath>.\USER\Drivers\Moter.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Drivers\LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Drivers\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>Joystick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Drivers\Joystick.c</FilePath>
+            </File>
+            <File>
+              <FileName>Joystick.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Drivers\Joystick.h</FilePath>
+            </File>
+            <File>
+              <FileName>Handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Drivers\Handler.c</FilePath>
+            </File>
+            <File>
+              <FileName>Handler.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Drivers\Handler.h</FilePath>
+            </File>
+            <File>
+              <FileName>Delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Drivers\Delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>Delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Drivers\Delay.h</FilePath>
+            </File>
+            <File>
+              <FileName>keys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Drivers\keys.c</FilePath>
+            </File>
+            <File>
+              <FileName>keys.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Drivers\keys.h</FilePath>
+            </File>
+            <File>
+              <FileName>BT04-A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Drivers\BT04-A.c</FilePath>
+            </File>
+            <File>
+              <FileName>BT04-A.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Drivers\BT04-A.h</FilePath>
+            </File>
+            <File>
+              <FileName>TTL_USB.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Drivers\TTL_USB.c</FilePath>
+            </File>
+            <File>
+              <FileName>TTL_USB.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Drivers\TTL_USB.h</FilePath>
+            </File>
+            <File>
+              <FileName>USART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Drivers\USART.c</FilePath>
+            </File>
+            <File>
+              <FileName>USART.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Drivers\USART.h</FilePath>
+            </File>
+            <File>
+              <FileName>Device_PWR.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Drivers\Device_PWR.c</FilePath>
+            </File>
+            <File>
+              <FileName>Device_PWR.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Drivers\Device_PWR.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Config</GroupName>
+          <Files>
+            <File>
+              <FileName>NVIC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Config\NVIC.c</FilePath>
+            </File>
+            <File>
+              <FileName>NVIC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Config\NVIC.h</FilePath>
+            </File>
+            <File>
+              <FileName>TIM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\Config\TIM.c</FilePath>
+            </File>
+            <File>
+              <FileName>TIM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\Config\TIM.h</FilePath>
             </File>
           </Files>
         </Group>
